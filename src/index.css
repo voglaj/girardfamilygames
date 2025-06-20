@@ -1,0 +1,211 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+:root {
+  /* 4th of July Theme - Light Mode Inspired */
+  --background: 240 100% 97%; /* Light Blue-White */
+  --foreground: 0 0% 13%; /* Dark Gray for text */
+  
+  --card: 0 0% 100%; /* White */
+  --card-foreground: 0 0% 13%; /* Dark Gray */
+  
+  --popover: 0 0% 100%; /* White */
+  --popover-foreground: 0 0% 13%; /* Dark Gray */
+  
+  --primary: 0 72% 51%; /* Bright Red (brand-red) */
+  --primary-foreground: 0 0% 100%; /* White */
+  
+  --secondary: 221 83% 53%; /* Bright Blue (brand-blue) */
+  --secondary-foreground: 0 0% 100%; /* White */
+  
+  --muted: 240 5% 90%; /* Light Gray */
+  --muted-foreground: 240 4% 46%; /* Medium Gray */
+  
+  --accent: 240 5% 96%; /* Very Light Gray */
+  --accent-foreground: 0 72% 51%; /* Bright Red */
+  
+  --destructive: 0 84% 60%; /* Strong Red */
+  --destructive-foreground: 0 0% 100%; /* White */
+  
+  --border: 240 6% 80%; /* Medium Light Gray */
+  --input: 240 6% 80%; /* Medium Light Gray */
+  --ring: 221 83% 53%; /* Bright Blue for focus rings */
+
+  --radius: 0.5rem;
+
+  /* Custom Brand Colors */
+  --brand-red: 0 72% 51%; /* #B22234 mapped to HSL */
+  --brand-blue: 221 83% 53%; /* #002868 mapped to HSL */
+  --brand-white: 0 0% 100%; /* #FFFFFF */
+}
+
+.dark {
+  /* Dark mode can be defined here if needed later */
+}
+
+body {
+  @apply bg-gradient-to-br from-brand-red via-brand-white to-brand-blue text-foreground;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100vh;
+}
+
+* {
+  @apply border-border;
+}
+
+
+/* Shadcn UI component styles override for 4th of July theme */
+/* Buttons */
+.bg-primary { @apply bg-brand-red hover:bg-red-700; } /* Use brand-red */
+.text-primary-foreground { @apply text-brand-white; }
+.bg-secondary { @apply bg-brand-blue hover:bg-blue-700; } /* Use brand-blue */
+.text-secondary-foreground { @apply text-brand-white; }
+.bg-destructive { @apply bg-red-700 hover:bg-red-800; }
+.text-destructive-foreground { @apply text-brand-white; }
+
+/* Cards */
+.bg-card { @apply bg-white/90 backdrop-blur-sm; }
+.text-card-foreground { @apply text-gray-800; }
+.border-card { @apply border-gray-300; }
+
+/* Inputs & Dialogs */
+.bg-background { @apply bg-gray-50; }
+.text-foreground { @apply text-gray-900; }
+.border-input { @apply border-gray-400; }
+.ring-ring { @apply ring-brand-blue; } /* Use brand-blue for focus */
+
+/* Specific component adjustments for better theme integration */
+.text-white { @apply text-gray-900; } 
+.text-white\/80 { @apply text-gray-700; }
+.text-white\/60 { @apply text-gray-600; }
+.text-white\/40 { @apply text-gray-500; }
+
+/* Override for elements that should remain white on colored backgrounds */
+.force-text-white {
+  color: hsl(var(--brand-white)) !important;
+}
+.force-text-white\/80 {
+  color: hsla(var(--brand-white), 0.8) !important;
+}
+
+/* Ensure tab text colors are distinct */
+.tab-active-text {
+  @apply text-brand-white;
+}
+.tab-inactive-text {
+  @apply text-brand-blue;
+}
+.tab-inactive-icon {
+   @apply text-brand-blue;
+}
+.tab-active-icon {
+  @apply text-brand-white;
+}
+
+
+/* Keep existing animations */
+.animate-in {
+  animation: animate-in 0.2s ease-out;
+}
+
+.animate-out {
+  animation: animate-out 0.2s ease-in;
+}
+
+@keyframes animate-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes animate-out {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.fade-in-0 {
+  animation: fade-in 0.2s ease-out;
+}
+
+.fade-out-0 {
+  animation: fade-out 0.2s ease-in;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fade-out {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.zoom-in-95 {
+  animation: zoom-in-95 0.2s ease-out;
+}
+
+.zoom-out-95 {
+  animation: zoom-out-95 0.2s ease-in;
+}
+
+@keyframes zoom-in-95 {
+  from { transform: scale(0.95); }
+  to { transform: scale(1); }
+}
+
+@keyframes zoom-out-95 {
+  from { transform: scale(1); }
+  to { transform: scale(0.95); }
+}
+
+.slide-in-from-left-1\/2 {
+  animation: slide-in-from-left-1/2 0.2s ease-out;
+}
+
+.slide-in-from-top-48 {
+  animation: slide-in-from-top-48 0.2s ease-out;
+}
+
+.slide-out-to-left-1\/2 {
+  animation: slide-out-to-left-1/2 0.2s ease-in;
+}
+
+.slide-out-to-top-48 {
+  animation: slide-out-to-top-48 0.2s ease-in;
+}
+
+@keyframes slide-in-from-left-1\/2 {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slide-in-from-top-48 {
+  from { transform: translateY(-48%); }
+  to { transform: translateY(0); }
+}
+
+@keyframes slide-out-to-left-1\/2 {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes slide-out-to-top-48 {
+  from { transform: translateY(0); }
+  to { transform: translateY(-48%); }
+}
